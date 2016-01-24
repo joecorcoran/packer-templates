@@ -28,4 +28,9 @@ describe 'elasticsearch installation', sudo: true do
     its(:stdout) { should match(/"user"\s*:\s*"kimchy"/) }
     its(:stdout) { should match(/"message"\s*:\s*"Trying out Elasticsearch"/) }
   end
+
+  after :all do
+    tcpwait('localhost', 9200, 30)
+    sh('curl -XDELETE \'http://localhost:9200/twitter/\'')
+  end
 end
