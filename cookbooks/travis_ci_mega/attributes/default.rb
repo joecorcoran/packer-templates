@@ -136,6 +136,12 @@ rubies = %w(
 override['travis_build_environment']['default_ruby'] = rubies.reject { |n| n =~ /jruby/ }.max
 override['travis_build_environment']['rubies'] = rubies
 
+
+override['rvm']['gems'] = %w(
+  bundler
+  rake
+)
+
 override['travis_build_environment']['otp_releases'] = %w(
   17.0
   17.1
